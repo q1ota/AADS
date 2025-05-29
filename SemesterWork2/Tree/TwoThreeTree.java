@@ -101,18 +101,18 @@ public class TwoThreeTree {
 
         if (i < node.values.size() && value == node.values.get(i)) {
             if (node.isLeaf) {
-                node.values.remove(i); // Просто удаляем из листа
+                node.values.remove(i); // просто удаляем из листа
             } else {
-                // Найдём преемника
+                // найдём преемника
                 Node successor = node.children.get(i + 1);
-                if (successor == null || successor.values.isEmpty()) return; // Защита
+                if (successor == null || successor.values.isEmpty()) return; // защита
 
                 while (!successor.isLeaf && !successor.children.isEmpty()) {
                     successor = successor.children.get(0);
                     operationCount++;
                 }
 
-                if (successor.values.isEmpty()) return; // Дополнительная защита
+                if (successor.values.isEmpty()) return; // дополнительная защита
 
                 int successorValue = successor.values.get(0);
                 node.values.set(i, successorValue);
@@ -126,7 +126,7 @@ public class TwoThreeTree {
     // пример обхода дерева (in-order)
     public void traverse() {
         traverse(root);
-        System.out.println(); // Для перевода строки после вывода
+        System.out.println(); // для перевода строки после вывода
     }
 
     private void traverse(Node node) {
